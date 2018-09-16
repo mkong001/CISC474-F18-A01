@@ -54,37 +54,38 @@ var car=function(xPos, yPos){
     // slowingDown is a boolean that is true if the movement is slowing down or false if it is speeding up 
         if (slowingDown)
         {
-            if (self.velocity > 0)
+            // If the car is slowing down, but not yet stopped, reduce speed by the rate of the deceleration
+            if (self.velocity > 1) // Uses > 1 because its being multiplied by a decimal, so eventuall will reach a fraction number, and that speed is so slow we want the car to stop
             {
                 self.velocity = (self.velocity * (1-self.acceleration));
             }
+            // If the car has completed its movement, slowing down to a stop,
             else
             {
                 self.velocity = 0;
-                self.stopWait();
             }
         }
         else
         {
+            // If the car is stopped, and is speeding up, then it will start at velocity of 1 which will then be multiplied by acceleration
             if (self.velocity <= 0)
             {
                 self.velocity = 1;
             }
+            // If the car is speeding up, and is already moving, the speed will increase by the rate of its acceleration
             else if (self.velocity < self.options.maxSpeed)
             {
                 self.velocity = (self.velocity / self.acceleration);
             }
-            else
+            // Makes sure the max speed is not broken
+            if (self.velocity > self.options.maxSpeed)
             {
-                self.velocity = self.velocity = self.options.maxSpeed
+                self.velocity = self.options.maxSpeed
             }
         }
 
     };
 
-    this.stopWait=function(){
-        setTimeout(self.move(false), timeout);
-    };
     this.initialize();
 }
 
