@@ -794,3 +794,14 @@ to{-webkit-transform:rotate(0deg);}
 	box-shadow:100px 0 0 #fff;
 	background:#fff;
 }
+
+#score_div{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 10%;
+    font-size: 35px;
+    background-color: white;
+    color: #454545;
+    padding: 10px;
+    box-shadow: 4px 4px 0px 1px #808080;
+}
