@@ -21,7 +21,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 .country-wrap {
 	position:relative;
 	width:100%;
-	height:100%;
+	height:75%;
 	overflow:hidden;
 }
 .push-bottom {
@@ -80,7 +80,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 .grass {
 	height: 40px;
   	width: 100%;
-	background-color: #dbcac2;
+	background-color: #006400;
 	position:absolute;
 	bottom:60px;
 }
@@ -105,9 +105,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
     background-size:10px 10px;
 }
 .sun {
-	background:#ff9944;
-	width:40px;
-	height:40px;
+	background:#FFFF00;
+	width:70px;
+	height:60px;
 	border-radius:50%;
 	box-shadow:0 0 50px rgba(255,153,68,0.7);
 	position:absolute;
@@ -238,12 +238,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 @-moz-keyframes myfirst 
 {
 	0%   {left:-25%;}
-	100% {left:100%;}
+	100% {left:80%;}
 } 
 @-webkit-keyframes myfirst
 {
 	0%   {left:-25%;}
-	100% {left:100%;}
+	100% {left:80%;}
 } 
 .tyre {
 	width:30px;
@@ -330,15 +330,15 @@ to{-webkit-transform:rotate(0deg);}
 	background:#d1352b;
 	border-top:1px solid #a82e27;*/
 	border-bottom: 24px solid #d1352b;
-    height: 0;
+    height: 15x;
 	top:10px;
-    width: 120px;
+    width: 130px;
 	position:relative;
 }
 .car-body:before {
 	content:'';
 	display:inline-block;
-	width:30px;
+	width:40px;
 	height:24px;
 	position:absolute;
 	right:-5px;
@@ -804,4 +804,27 @@ to{-webkit-transform:rotate(0deg);}
     color: #454545;
     padding: 10px;
     box-shadow: 4px 4px 0px 1px #808080;
+<<<<<<< HEAD
 }
+
+/* Code for Stop sign -----------------------------------------------------------*/
+
+
+  .finalstop-img{
+
+    position:fixed;
+    right:5px;
+    bottom:5px 
+	width: 5px;
+}  
+ div.outer { position: relative; height: 5px;}
+ div.outer img { position: absolute; right: 0; bottom: 75px; } 
+ 
+
+
+ 
+ 
+
+=======
+}
+>>>>>>> master
