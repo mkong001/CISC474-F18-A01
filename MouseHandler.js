@@ -49,6 +49,7 @@ html.onclick = function(e)
 				click = 0;
 			}, 100);
 		}
+        lock = 0;
 	}
 
 }
