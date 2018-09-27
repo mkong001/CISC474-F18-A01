@@ -50,6 +50,8 @@ html.onclick = function(e)
 			}, 100);
 		}
         lock = 0;
+        x = e.clientX;
+        y = e.clientY;
 	}
 
 }
