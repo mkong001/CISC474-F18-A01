@@ -8,7 +8,7 @@ var h = $(document).height();
 var lock = 0;
 var click = 0;
 
-// window.addEventListener('load', eventWindowLoaded, false);
+//window.addEventListener('load', eventWindowLoaded, false);
 var html = document.querySelector('html');
 
 function mouseMove(mx, my)
@@ -16,7 +16,7 @@ function mouseMove(mx, my)
 	x = mx;
 	y = my;
 
-	$('#cursor').css('left', x).css('top', y);
+	$('#maccursor').css('left', x).css('top', y);
 }
 
 $(function()
@@ -36,7 +36,7 @@ html.onclick = function(e)
 		x = e.clientX;
 		y = e.clientY;
 		html.requestPointerLock();
-		$('#cursor').css('left', x).css('top', y);
+		$('#maccursor').css('left', x).css('top', y);
 	}
 	else
 	{
@@ -49,9 +49,6 @@ html.onclick = function(e)
 				click = 0;
 			}, 100);
 		}
-        lock = 0;
-        x = e.clientX;
-        y = e.clientY;
 	}
 
 }
@@ -68,14 +65,12 @@ function lockChangeAlert()
 		document.webkitPointerLockElement === html)
 	{
 		// console.log('The pointer lock status is now locked');
-		document.addEventListener("mousemove", forHtml
-	, false);
+		document.addEventListener("mousemove", htmlLoop, false);
 	}
 	else
 	{
 		// console.log('The pointer lock status is now unlocked');
-		document.removeEventListener("mousemove", forHtml
-	, false);
+		document.removeEventListener("mousemove", htmlLoop, false);
 	}
 }
 
@@ -87,7 +82,7 @@ tracker.style.top = '0';
 tracker.style.right = '10px';
 tracker.style.backgroundColor = 'white';
 
-function forHtml(e)
+function htmlLoop(e)
 {
 
 	var movementX = e.movementX ||
@@ -121,10 +116,9 @@ function forHtml(e)
 		y = 0 - 25;
 	}
 
-	$('#cursor').css('left', x - 20).css('top', y + 7);
+	$('#maccursor').css('left', x - 20).css('top', y + 7);
 
-	var animation = requestAnimationFrame(forHtml
-	);
+	var animation = requestAnimationFrame(htmlLoop);
 
 	tracker.innerHTML = "X position: " + x + ', Y position: ' + y;
 }

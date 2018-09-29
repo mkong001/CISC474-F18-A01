@@ -23,7 +23,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	width: 60px;
 	height: 60px;
 	background-size: contain;
-	background-image: url('aim2.png');
+	background-image: url('../images/aim2.png');
 	background-repeat: no-repeat;
    background-position: top left;    
 	position: absolute;
@@ -817,7 +817,6 @@ to{-webkit-transform:rotate(0deg);}
     color: #454545;
     padding: 10px;
     box-shadow: 4px 4px 0px 1px #808080;
-<<<<<<< HEAD
 }
 
 /* Code for Stop sign -----------------------------------------------------------*/
@@ -838,6 +837,3 @@ to{-webkit-transform:rotate(0deg);}
  
  
 
-=======
-}
->>>>>>> master
