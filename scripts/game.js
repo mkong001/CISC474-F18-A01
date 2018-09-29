@@ -1,16 +1,40 @@
-var phoneGame=function(){
+var game=function(){
     var self=this;
-    this.options={
-        height:450,
-        width:800,
-        projetileRadius:5,
-        projectileSpeed:150,
-        bowX:50,
-        bowY:0
-    }
+
+    this.width=144;
+    this.length=96;
     this.shotsFired=0
     this.shotsHit=0
-    this.car1=new car(3*this.options.height/4, this.options.width + 200);
+    this.vehicle=new vehicle(3*this.options.height/4, this.options.width + 200);
+    this.life=3;
+    this.score=0;
+    this.time=0;
+
+    this.reset=function(){
+        this.shotsEffective=0;
+        this.shotsWrong=0;
+        this.life=3;
+        this.score=0;
+    }
+    
+    this.initialize=function(){
+        self.reset();    
+    };
+
+    this.scoreCalculator = function(){
+        this.score += 50*this.shotsEffective - 100*this.shotsWrong;
+    }
+
+    this.update = function(time){
+        this.time=time;
+        self.vehicle.updatePostion(time);
+        if(self.vehicle.xPos){
+            
+        }
+
+    }
+
+    this.initialize();
 }
 
 this.update=function(time){
@@ -23,28 +47,27 @@ this.update=function(time){
 
 var car=function(xPos, yPos){
     var self=this;
-    this.options={
-        height:100,
-        width:175,
+    this.height=100,
+    this.width=175,
 
-        // Defining the bounds of how long the car waits at the stop sign
-        minDelay:1000,
-        maxDelay:5000,
+    // Defining the bounds of how long the car waits at the stop sign
+    this.minDelay=1000,
+    this.maxDelay=5000,
 
-        // Defining the bounds of the initial speed, and acceleration which will be set randomly
-        minSpeed:70,
-        maxSpeed:150,
-        minAccel:0.1,
-        maxAccel:0.4,
+    // Defining the bounds of the initial speed, and acceleration which will be set randomly
+    this.minSpeed=70,
+    this.maxSpeed=150,
+    this.minAccel=0.1,
+    this.maxAccel=0.4,
 
-        // Defining the top right left corner of the window
-        windowX:40,
-        windowY:10,
+    // Defining the top right left corner of the window
+    this.windowX=40,
+    this.windowY=10,
 
-        // Defining length and width from the positional point
-        windowHeight:40,
-        windowLength:60,
-    }
+    // Defining length and width from the positional point
+    this.windowHeight=40,
+    this.windowLength=60,
+    
     this.xPos=xPos;
     this.xWaitPos=100
     this.yPos=yPos;

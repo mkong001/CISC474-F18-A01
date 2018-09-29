@@ -18,6 +18,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	padding:0;
 	margin:0;
 }
+#cursor{
+	cursor: none;
+	width: 60px;
+	height: 60px;
+	background-size: contain;
+	background-image: url('../images/aim2.png');
+	background-repeat: no-repeat;
+   background-position: top left;    
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+   }   
 .country-wrap {
 	position:relative;
 	width:100%;
@@ -804,7 +817,6 @@ to{-webkit-transform:rotate(0deg);}
     color: #454545;
     padding: 10px;
     box-shadow: 4px 4px 0px 1px #808080;
-<<<<<<< HEAD
 }
 
 /* Code for Stop sign -----------------------------------------------------------*/
@@ -825,6 +837,3 @@ to{-webkit-transform:rotate(0deg);}
  
  
 
-=======
-}
->>>>>>> master
