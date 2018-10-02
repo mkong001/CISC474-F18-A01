@@ -1,88 +1,48 @@
 <!DOCTYPE html>
 <html>
         <head>
-                <link rel="stylesheet" href="style/stop.css">
-              </head>
+            <link rel="stylesheet" href="stop.css">
+             </head>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<body>
-<!-- <div id="background-img" class="background-img" ></div>  -->
-
+	<body>
     <div class="country-wrap">
-
-        <!--<div class="mountain-1"></div>
-        <div class="mountain-2"></div>-->
-		
-		    <div id="score_div">
+		<div id="score_div">
         Points: <span id="score">0</span>
     </div>
-        
+<!--     <div id="GameStopped"><button id="StartBtn" class="btnStyle">Start Game</button>
+         <div class="Status">Click Start to begin</div></div> -->
+		 
+		 
+		 
+		 <!-- Some Declartion  -->
         <div class="sun"></div>
         <div class="grass"></div>
         <div class="street">
-		
-            <div class="car">
-            <!--<div class="car-base"></div>-->
-            <div class="car-body">
-                <div class="car-top-back">
-                    <div class="back-curve"></div>
-                </div>
-                <div class="car-gate"></div>
-                <div class="car-top-front">
-                    <div class="wind-sheild"></div>
-                </div>
-                <div class="bonet-front"></div>
-                <div class="stepney"></div>
-            </div>
-            <div class="boundary-tyre-cover">
-                <div class="boundary-tyre-cover-back-bottom"></div>
-                <div class="boundary-tyre-cover-inner"></div>	
-            </div>
-            <div class="tyre-cover-front">
-                <div class="boundary-tyre-cover-inner-front"></div>
-            </div>
-            <div class="base-axcel">
-                
-            </div>
-            <div class="front-bumper"></div>
-            <div class="tyre">		
-                <div class="gap"></div>	
-				
-				
-            </div>
-            <div class="tyre front">
-                <div class="gap"></div>	
-            </div>
-            <div class="car-shadow"></div>
-        </div>
-        </div>
+		<!--Blue Truck-->
+	<div class="blue_truck">
+	<div class="blue_truck_rim_one"></div>
+	<div class="blue_truck_rim_two"></div>
+	</div>
         <div class="street-stripe"></div>
 		
-		 
+		<!--Suzuki Truck-->
+  <div class="suzuki">
+    <div class="suzuki_rim_one"></div>
+    <div class="suzuki_rim_two"></div>
+	</div>
         <div class="hill">
-		
-		
-           <!--  <div class="tree-1">
-                <div class="branch-1"></div>
-                <div class="branch-2"></div>
-                <div class="branch-3"></div>
-            </div>
-            <div class="tree-1">
-            <div class="branch"></div>
-            <div class="trunk"></div>
-        </div> -->
-		
         </div>
     </div>
+	
+	
     <div id="cursor"></div>
-    <script src="scripts/MouseHandler.js"></script>
+    <script src="MouseHandler.js"></script>
 	
 	 <div class="outer">
 	 
-    <img src="images/finalstop.png" width="150" height="300" > </div>  
-	 <!-- <img src="arrow.png" width="150" height="300" >
-		</div> -->  	
-	
-	<script src="scripts/game.js"></script>
-	
+    <img src="finalstop.png" width="150" height="300" > </div>  
+	<script src="gameLogic.js"></script>
+  <script src="gameLogic.js"></script>
 </body>
 </html>
