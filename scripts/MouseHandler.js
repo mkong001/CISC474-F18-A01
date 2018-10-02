@@ -4,11 +4,11 @@ var x = 50;
 var y = 50;
 var w = $(document).width();
 var h = $(document).height();
+var shotsE= $(document).shotsEffective;
+var shotsW= $(document).shotsWrong;
 
-var lock = 0;
 var click = 0;
 
-// window.addEventListener('load', eventWindowLoaded, false);
 var html = document.querySelector('html');
 
 function mouseMove(mx, my)
@@ -16,40 +16,23 @@ function mouseMove(mx, my)
 	x = mx;
 	y = my;
 
-	$('#cursor').css('left', x).css('top', y);
+	$('#maccursor').css('left', x).css('top', y);
 }
-
-$(function()
-{
-	$("#testButton").on("click", function(e)
-	{
-		mouseMove(x + 100, y + 100);
-	});
-});
-
 
 html.onclick = function(e)
 {
-	if (lock == 0)
-	{
-		lock = 1;
 		html.requestPointerLock();
-		$('#cursor').css('left', x).css('top', y);
-	}
-	else
-	{
+		$('#maccursor').css('left', x).css('top', y);
+
 		if (click == 0)
 		{
-			click = 1;
-			$(document.elementFromPoint(x, y + 10)).click();
-			 setTimeout(function()
-			 {
-			 	click = 0;
-			 }, 100);
+			if((x<=980 && x>=920)&&(y>=500 && y<=560)){
+				shotsEffective++;
+			}else{
+				shotsWrong++;
+			}
+			
 		}
-		lock = 0;
-	}
-
 }
 
 // Hook pointer lock state change events for different browsers
@@ -64,14 +47,12 @@ function lockChangeAlert()
 		document.webkitPointerLockElement === html)
 	{
 		// console.log('The pointer lock status is now locked');
-		document.addEventListener("mousemove", forHtml
-	, false);
+		document.addEventListener("mousemove", htmlLoop, false);
 	}
 	else
 	{
 		// console.log('The pointer lock status is now unlocked');
-		document.removeEventListener("mousemove", forHtml
-	, false);
+		document.removeEventListener("mousemove", htmlLoop, false);
 	}
 }
 
@@ -83,7 +64,8 @@ tracker.style.top = '0';
 tracker.style.right = '10px';
 tracker.style.backgroundColor = 'white';
 
-function forHtml(e)
+//The boundaries are set.
+function htmlLoop(e)
 {
 
 	var movementX = e.movementX ||
@@ -99,28 +81,27 @@ function forHtml(e)
 	x += movementX;
 	y += movementY;
 
-	if (x >= w + 20)
+	if (x >= 1200)
 	{
-		x = w + 20;
+		x = 1200;
 	}
 	else if (x <= 0)
 	{
 		x = 0;
 	}
 
-	if (y >= h + 25)
+	if (y >= 670)
 	{
-		y = h + 25;
+		y = 670;
 	}
 	else if (y <= 0 - 25)
 	{
 		y = 0 - 25;
 	}
 
-	$('#cursor').css('left', x - 20).css('top', y + 7);
+	$('#maccursor').css('left', x - 20).css('top', y + 7);
 
-	var animation = requestAnimationFrame(forHtml
-	);
+	var animation = requestAnimationFrame(htmlLoop);
 
 	tracker.innerHTML = "X position: " + x + ', Y position: ' + y;
 }

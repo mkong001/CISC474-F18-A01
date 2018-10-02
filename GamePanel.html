@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<title>GamePanel</title>
+	<link rel="stylesheet" href="style/Items.css" type="text/css">
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type='text/javascript' src="scripts/vehicle.js"></script>
+	<script type='text/javascript' src="scripts/GameUI.js"></script>
+</head>
+
+<body>
+
+<h2>GamePanel</h2>
+Click to move the mouse.
+<br><br>
+<div id="mainContent">
+	<div id="backGround" style="position:absolute;">
+		<div id="scoreBoard">
+			<div id="score_div">Points: <span id="score">0</span></div>
+			<div id="shotsEffective">Effective Shots : <div class="OutputText" id="EffectiveCount">0</div></div>
+			<div id="shotsWrong">Mistake Shots: <div class="OutputText" id="MistakeCount">0</div></div>
+			<!-- <div style = "position:absolute; left:1000px; top:10px" id="lifeSystem"></div> -->
+			<div id="threeHeart"></div>
+		</div>
+	</div>
+	<div id="vehicle"></div>
+	<div id="maccursor"></div>
+</div>
+<div style = "position:absolute; left:120px; top:2px" id="GameStopped"><button id="StartBtn" class="btnStyle">Start Game</button>
+<div style = "position:absolute; left:260px; top:2px" id="GameRunning"><button id="StopBtn" class="btnStyle">Stop</button>
+
+<script src="scripts/MouseHandler.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+       var sg=new gameUI(); 
+    });
+</script>
+</body>
+</html>
