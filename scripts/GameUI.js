@@ -1,7 +1,15 @@
-var gameUI=function(){
+function gameUI(){
     var self=this;
     this.game=undefined;
     this.running=false;
+    var window_Height=800;
+    var window_Length=800;
+    var total_Score=0;
+    var speed=0;
+    var life=3;
+    var time=0;
+    var on_Target=50;
+    var lose_Target= -100;
 
     this.initialize=function(){
         self.game= new vehicleGame()
@@ -11,7 +19,9 @@ var gameUI=function(){
         $('#StartBtn').on('click',function(){
             $('#GameStopped').hide();
             $('#GameRunning').show();
+            $('#Status').text('Get Ready...');
             self.running=true;
+            self.takeShot();
         });   
 
         $('#StopBtn').on('click',function(){
@@ -23,29 +33,10 @@ var gameUI=function(){
         });
     }
     this.refreshView=function(){
-        self.game.lifeSystem();
         $('#vehicle').css("left",self.game.vehicle.xPos+10);
         $('#EffectiveCount').text(self.game.shotsEffective);
         $('#MistakeCount').text(self.game.shotsWrong);
     };
-
-
-    // Need to be done!
-    this.lifeSystem = function(){
-        var lifePic= document.getElementById("threeHeart");
-        if(life==3){
-            $('#threeHeart').css('background-image', 'url(../Image/twohearts.png)');
-            // lifePic.style.backgroundImage='url(../Image/threehearts.png)';
-        }
-        if(life==2){
-            $('#threeHeart').css('background-image', 'url(../Image/twohearts.png)');
-            // lifePic.style.backgroundImage='url(../Image/twohearts.png)';
-        }
-        if(life==1){
-            $('#threeHeart').css('background-image', 'url(../Image/heart.png)');
-            // lifePic.style.backgroundImage='url(../Image/heart.png)';
-        }
-    }
 
     this.updateUI=function()
     {
@@ -78,7 +69,6 @@ var gameUI=function(){
             }
 
     }
-
     this.initialize();
 }
 

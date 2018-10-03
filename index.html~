@@ -3,9 +3,9 @@
         <head>
             <link rel="stylesheet" href="style/stop.css">
              </head>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<body>
-    <img id="life" src=""/>
     <div class="country-wrap">
 		<div id="score_div">
         Points: <span id="score">0</span>
@@ -41,7 +41,8 @@
 	
 	 <div class="outer">
 	 
-    <img src="images/finalstop.png" width="150" height="300" > </div>  
-	<script src="scripts/game.js"></script>
+    <img src="finalstop.png" width="150" height="300" > </div>  
+	<script src="scripts/gameLogic.js"></script>
+  <script src="scripts/gameLogic.js"></script>
 </body>
 </html>
