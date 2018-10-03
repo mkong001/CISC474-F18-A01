@@ -24,18 +24,33 @@ html.onclick = function(e)
 {
 		html.requestPointerLock();
 		$('#cursor').css('left', x).css('top', y);
-		var blue_truck = $(document.getElementsByClassName("blue_truck"));
-		var offset = blue_truck.offset();
-		var truck_top = offset.top;
+
+        //obtaining location for blue truck
+        var blue_truck = $(document.getElementsByClassName("blue_truck"));
+		var blue_offset = blue_truck.offset();
+		var truck_top = blue_offset.top;
 		var truck_bottom = truck_top + blue_truck.height();
-		var truck_left = offset.left;
-		var truck_right = truck_left + blue_truck.width();
+		var truck_left = blue_offset.left;
+        var truck_right = truck_left + blue_truck.width();
+
+        //obtaining location for suzuki truck
+        var suzuki = $(document.getElementsByClassName("suzuki"));
+        var suz_offset = suzuki.offset();
+        var suz_top = suz_offset.top;
+        var suz_bottom = suz_top + suzuki.height();
+        var suz_left = suz_offset.left;
+        var suz_right = suz_left + suzuki.width();
+        
 		if (click == 0)
 		
 		{
 			if((x<=truck_right && x>=truck_left) && (y<=truck_bottom && y>=truck_top)){
 				score += 100;
-			}else{
+            }
+            else if((x<=suz_right && x>=suz_left) && (y<=suz_bottom && y>=suz_top)){
+                score += 100;
+            }   
+            else{
 				score -= 50;
 			}
 			
