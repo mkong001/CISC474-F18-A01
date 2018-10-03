@@ -6,6 +6,7 @@ var w = $(document).width();
 var h = $(document).height();
 var shotsE= $(document).shotsEffective;
 var shotsW= $(document).shotsWrong;
+var score = 0;
 
 var click = 0;
 
@@ -33,10 +34,9 @@ html.onclick = function(e)
 		
 		{
 			if((x<=truck_right && x>=truck_left) && (y<=truck_bottom && y>=truck_top)){
-				shotsE++;
-				window.alert("SHOT HIT");
+				score += 100;
 			}else{
-				shotsW++;
+				score -= 50;
 			}
 			
 		}
@@ -112,9 +112,9 @@ function htmlLoop(e)
 		y = 0 - 25;
 	}
 
-	$('#cursor').css('left', x - 20).css('top', y + 7);
-
+	$('#cursor').css('left', x).css('top', y);
+	$(document.getElementById("score")).text(score.toString());
 	var animation = requestAnimationFrame(htmlLoop);
 
-	tracker.innerHTML = "X position: " + x + ', Y position: ' + y + "Truck Top: " + truck_top + ", Truck Bottom: " + truck_bottom + ", Truck Left: " +  truck_left + ", Truck Right: " + truck_right;
+	tracker.innerHTML = "X position: " + x + ', Y position: ' + y;
 }
