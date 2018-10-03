@@ -6,6 +6,7 @@ var w = $(document).width();
 var h = $(document).height();
 var shotsE= $(document).shotsEffective;
 var shotsW= $(document).shotsWrong;
+var score = 0;
 
 var click = 0;
 
@@ -16,20 +17,26 @@ function mouseMove(mx, my)
 	x = mx;
 	y = my;
 
-	$('#maccursor').css('left', x).css('top', y);
+	$('#cursor').css('left', x).css('top', y);
 }
 
 html.onclick = function(e)
 {
 		html.requestPointerLock();
-		$('#maccursor').css('left', x).css('top', y);
-
+		$('#cursor').css('left', x).css('top', y);
+		var blue_truck = $(document.getElementsByClassName("blue_truck"));
+		var offset = blue_truck.offset();
+		var truck_top = offset.top;
+		var truck_bottom = truck_top + blue_truck.height();
+		var truck_left = offset.left;
+		var truck_right = truck_left + blue_truck.width();
 		if (click == 0)
+		
 		{
-			if((x<=980 && x>=920)&&(y>=500 && y<=560)){
-				shotsEffective++;
+			if((x<=truck_right && x>=truck_left) && (y<=truck_bottom && y>=truck_top)){
+				score += 100;
 			}else{
-				shotsWrong++;
+				score -= 50;
 			}
 			
 		}
@@ -67,6 +74,12 @@ tracker.style.backgroundColor = 'white';
 //The boundaries are set.
 function htmlLoop(e)
 {
+	var blue_truck = $(document.getElementsByClassName("blue_truck"));
+	var offset = blue_truck.offset();
+	var truck_top = offset.top;
+	var truck_bottom = truck_top + blue_truck.height();
+	var truck_left = offset.left;
+	var truck_right = truck_left + blue_truck.width();
 
 	var movementX = e.movementX ||
 		e.mozMovementX ||
@@ -90,17 +103,17 @@ function htmlLoop(e)
 		x = 0;
 	}
 
-	if (y >= 670)
+	if (y >= 800)
 	{
-		y = 670;
+		y = 800;
 	}
 	else if (y <= 0 - 25)
 	{
 		y = 0 - 25;
 	}
 
-	$('#cursor').css('left', x - 20).css('top', y + 7);
-
+	$('#cursor').css('left', x).css('top', y);
+	$(document.getElementById("score")).text(score.toString());
 	var animation = requestAnimationFrame(htmlLoop);
 
 	tracker.innerHTML = "X position: " + x + ', Y position: ' + y;
