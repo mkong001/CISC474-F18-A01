@@ -11,10 +11,11 @@ var lifecount=3;
 //To detect whether the mouse is able to be clicked
 var click = 0;
 //To detect whether this is the first shot
-var first =0
+var first =0;
 //0 represents no cellphone, 1 represents with cellphone
 var blue_truck_type=0;
 var suzuki_type=0;
+var reload=0;
 
 
 var html = document.querySelector('html');
@@ -53,8 +54,17 @@ function mouseMove(mx, my)
 	$('#cursor').css('left', x).css('top', y);
 }
 
-function resetClick(){
-	click=0;
+function resetTimer(){
+	if(reload>0){
+		reload-=1;
+	}
+	if(reload==0){
+		click=0;
+	}
+}
+function vehicleSelector(){
+	btruckSelector();
+	suzukiSelector();
 }
 html.onclick = function(e)
 {
@@ -62,11 +72,11 @@ html.onclick = function(e)
 		$('#cursor').css('left', x).css('top', y);
 		//Fixed the initialize error
 		if(first==0){
-			score +=50;
-			lifecount +=1
 			first=1;
-			btruckSelector();
-			suzukiSelector();
+			score +=50;
+			lifecount +=1;
+			vehicleSelector();
+			reselect=1;
 		}
 		//obtaining location for blue truck
         var blue_truck = $(document.getElementsByClassName("blue_truck"));
@@ -94,7 +104,6 @@ html.onclick = function(e)
 					score -=50;
 					lifecount-=1;
 				}
-				click=1;
             }
             else if((x<=suz_right && x>=suz_left) && (y<=suz_bottom && y>=suz_top)){
 				if(suzuki_type==1){
@@ -103,18 +112,18 @@ html.onclick = function(e)
 					score -=50;
 					lifecount-=1;
 				}
-				click=1;
             }   
             else{
 				score -= 50;
 				lifecount-=1;
 			}
-		// If you shoot any vehicle, after 4 secs you will have a new bullet
+			click=1;
+			reload=2;
+			vehicleSelector();
+		// If you shoot any vehicle, after 2 secs you will have a new bullet
 		// And re-select the vehicles' type.	
 		}else{
-			setTimeout(btruckSelector, 1000);
-			setTimeout(suzukiSelector, 1000);
-			setTimeout(resetClick, 4000);
+			setInterval(resetTimer,1000);
 		}
 
 		switch(lifecount){
@@ -126,6 +135,9 @@ html.onclick = function(e)
 				break;
 			case 1:
 				$('#life').attr('src','images/heart.png');
+				break;
+			case 0:
+				$('#life').attr('src','images/empty.png');
 				break;
 		}
 }
@@ -202,6 +214,7 @@ function htmlLoop(e)
 
 	$('#cursor').css('left', x).css('top', y);
 	$(document.getElementById("score")).text(score.toString());
+	$(document.getElementById("reload")).text(reload.toString());
 	var animation = requestAnimationFrame(htmlLoop);
 
 	tracker.innerHTML = "X position: " + x + ', Y position: ' + y;
