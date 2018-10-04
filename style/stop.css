@@ -208,7 +208,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
   bottom: 200px;
   width: 2px;
   height: 50px;
-  background: $cd;
+  background: cd;
   margin-right: 20px;
 }
 
@@ -217,7 +217,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
   left: -10px;
   width: 22px;
   height: 2px;
-  background: $cd;
+  background: cd;
 }
 
 .la:after {
@@ -225,7 +225,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
   left: -2px;
   width: 6px;
   height: 12px;
-  background: $cd;
+  background: cd;
 }
 
 .l {
@@ -320,7 +320,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
     position:fixed;
     right:5px;
     bottom:5px 
-	width: 5px;
+	/* width:5px; */
 }  
  div.outer { position: relative; height: 5px;}
  div.outer img { position: absolute; right: 0; bottom: 85px; } 
@@ -341,6 +341,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
+.blue_truck_phone {
+	background: url(../images/blue-truck-phone.png) no-repeat center center;
+	height: 93px;
+	width: 235px;
+	position: relative;
+	top: -85%;
+	animation-name: blue_truck;
+	animation-duration: 15s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
  @keyframes blue_truck {
 0% {
  left:-100%;
@@ -352,7 +363,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
  left:100%;
 }
 }
-.blue_truck .blue_truck_rim_one, .blue_truck .blue_truck_rim_two {
+.blue_truck .blue_truck_phone .blue_truck_rim_one, .blue_truck .blue_truck_rim_two {
 	background: url(../images/truck-rim.png) no-repeat center center;
 	background-size: cover;
 	height: 18px;
@@ -364,10 +375,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
-.blue_truck .blue_truck_rim_one {
+.blue_truck .blue_truck_phone .blue_truck_rim_one {
 	left: 23%;
 }
-.blue_truck .blue_truck_rim_two {
+.blue_truck .blue_truck_phone .blue_truck_rim_two {
 	left: 75%;
 }
 @keyframes blue_truck_rim {
@@ -398,6 +409,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
+.suzuki_phone {
+	background: rgba(0, 0, 0, 0) url(../images/suzuki-phone.png) no-repeat scroll center center;
+	height: 62px;
+	position: relative;
+	top: -108%;
+	width: 120px;
+	-webkit-animation-name: suzuki; /* Chrome, Safari, Opera */
+	-webkit-animation-duration: 18s; /* Chrome, Safari, Opera */
+	-webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+	animation-name: suzuki;
+	animation-duration: 18s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
  @keyframes suzuki {
  0% {
  left:-55%;
@@ -409,14 +434,14 @@ left:0%
 left:100%;
 }
 }
-.suzuki .suzuki_rim_one, .suzuki .suzuki_rim_two {
+.suzuki .suzuki_phone .suzuki_rim_one, .suzuki .suzuki_rim_two {
 	background: rgba(0, 0, 0, 0) url(../images/suzuki-rim.png) repeat scroll center center / cover;
 	height: 18px;
 	position: absolute;
 	top: 70.4%;
 	width: 18px;
 }
-.suzuki .suzuki_rim_one {
+.suzuki .suzuki_phone .suzuki_rim_one {
 	left: 17%;
 	-webkit-animation-name: suzuki_rim_one; /* Chrome, Safari, Opera */
 	-webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
@@ -426,7 +451,7 @@ left:100%;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
-.suzuki .suzuki_rim_two {
+.suzuki .suzuki_phone .suzuki_rim_two {
 	left: 69.5%;
 	-webkit-animation-name: suzuki_rim_one; /* Chrome, Safari, Opera */
 	-webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
@@ -453,5 +478,70 @@ left:100%;
  transform: rotate(360deg);
 }
 }
+
+/*Green Truck*/
+.green_truck {
+	background: url(../images/green-truck.png) no-repeat center center;
+	height: 93px;
+	width: 235px;
+	position: relative;
+	top: -85%;
+	animation-name: green_truck;
+	animation-duration: 15s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+.green_truck_phone{
+	background: url(../images/green-truck-phone.png) no-repeat center center;
+	height: 93px;
+	width: 235px;
+	position: relative;
+	top: -85%;
+	animation-name: green_truck;
+	animation-duration: 15s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+ @keyframes green_truck {
+0% {
+ left:-100%;
+}
+50% {
+ left:0%;
+}
+ 100% {
+ left:100%;
+}
+}
+.green_truck .green_truck_phone .green_truck_rim_one, .green_truck .green_truck_rim_two {
+	background: url(../images/truck-rim.png) no-repeat center center;
+	background-size: cover;
+	height: 18px;
+	width: 18px;
+	position: absolute;
+	top: 75%;
+	animation-name: green_truck_rim;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+.green_truck .green_truck_phone .green_truck_rim_one {
+	left: 23%;
+}
+.green_truck .green_truck_phone .green_truck_rim_two {
+	left: 75%;
+}
+@keyframes green_truck_rim {
+ 0% {
+ transform: rotate(0deg);
+}
+ 50% {
+ transform: rotate(180deg);
+}
+ 100% {
+ transform: rotate(360deg);
+}
+}
+
 
 

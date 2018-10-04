@@ -8,10 +8,42 @@ var shotsE= $(document).shotsEffective;
 var shotsW= $(document).shotsWrong;
 var score = 0;
 var lifecount=3;
+//To detect whether the mouse is able to be clicked
 var click = 0;
+//To detect whether this is the first shot
 var first =0
+//0 represents no cellphone, 1 represents with cellphone
+var blue_truck_type=0;
+var suzuki_type=0;
+
 
 var html = document.querySelector('html');
+
+//Random selection
+function btruckSelector(){
+	var randomNumber= Math.round(Math.random());
+	if(randomNumber==1){
+		$(".blue_truck").css("background-image", "url('images/blue-truck.png')");
+		blue_truck_type=0;
+	}else{
+		$(".blue_truck").css("background-image", "url('images/blue-truck-phone.png')");
+		blue_truck_type=1;
+	}
+}
+
+//Random selection
+function suzukiSelector(){
+	var randomNumber2= Math.round(Math.random());
+	if(randomNumber2==1){
+		// suzuki=$(document.getElementsByClassName("suzuki_phone"));
+		$(".suzuki").css("background-image", "url('images/suzuki-phone.png')");
+		suzuki_type=1;
+	}else{
+		// suzuki=$(document.getElementsByClassName("suzuki"));
+		$(".suzuki").css("background-image", "url('images/suzuki.png')");
+		suzuki_type=0;
+	}
+}
 
 function mouseMove(mx, my)
 {
@@ -21,12 +53,22 @@ function mouseMove(mx, my)
 	$('#cursor').css('left', x).css('top', y);
 }
 
+function resetClick(){
+	click=0;
+}
 html.onclick = function(e)
 {
 		html.requestPointerLock();
 		$('#cursor').css('left', x).css('top', y);
-
-        //obtaining location for blue truck
+		//Fixed the initialize error
+		if(first==0){
+			score +=50;
+			lifecount +=1
+			first=1;
+			btruckSelector();
+			suzukiSelector();
+		}
+		//obtaining location for blue truck
         var blue_truck = $(document.getElementsByClassName("blue_truck"));
 		var blue_offset = blue_truck.offset();
 		var truck_top = blue_offset.top;
@@ -34,7 +76,8 @@ html.onclick = function(e)
 		var truck_left = blue_offset.left;
         var truck_right = truck_left + blue_truck.width();
 
-        //obtaining location for suzuki truck
+		//obtaining location for suzuki truck
+		
         var suzuki = $(document.getElementsByClassName("suzuki"));
         var suz_offset = suzuki.offset();
         var suz_top = suz_offset.top;
@@ -43,26 +86,37 @@ html.onclick = function(e)
         var suz_right = suz_left + suzuki.width();
         
 		if (click == 0)
-		
 		{
-			//Fixed the initialize error
-			if(first==0){
-				score +=50;
-				lifecount +=1
-				first=1;
-			}
 			if((x<=truck_right && x>=truck_left) && (y<=truck_bottom && y>=truck_top)){
-				score += 100;
+				if(blue_truck_type==1){
+					score += 100;
+				}else{
+					score -=50;
+					lifecount-=1;
+				}
+				click=1;
             }
             else if((x<=suz_right && x>=suz_left) && (y<=suz_bottom && y>=suz_top)){
-                score += 100;
+				if(suzuki_type==1){
+					score += 100;
+				}else{
+					score -=50;
+					lifecount-=1;
+				}
+				click=1;
             }   
             else{
 				score -= 50;
 				lifecount-=1;
 			}
-			
+		// If you shoot any vehicle, after 4 secs you will have a new bullet
+		// And re-select the vehicles' type.	
+		}else{
+			setTimeout(btruckSelector, 1000);
+			setTimeout(suzukiSelector, 1000);
+			setTimeout(resetClick, 4000);
 		}
+
 		switch(lifecount){
 			case 3:
 				$('#life').attr('src','images/threehearts.png');
