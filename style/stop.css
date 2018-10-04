@@ -34,7 +34,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 .country-wrap {
 	position:relative;
 	width:100%;
-	height:75%;
+	height:80%;
 	overflow:hidden;
 }
 .push-bottom {
@@ -335,7 +335,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	height: 93px;
 	width: 235px;
 	position: relative;
-	top: -85%;
+	top: -80%;
 	animation-name: blue_truck;
 	animation-duration: 15s;
 	animation-timing-function: linear;
@@ -382,13 +382,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 }
 }
 
-
 /*Suzuki*/
 .suzuki {
 	background: rgba(0, 0, 0, 0) url(../images/suzuki.png) no-repeat scroll center center;
 	height: 62px;
 	position: relative;
-	top: -108%;
+	top: -110%;
 	width: 120px;
 	-webkit-animation-name: suzuki; /* Chrome, Safari, Opera */
 	-webkit-animation-duration: 18s; /* Chrome, Safari, Opera */
@@ -452,6 +451,11 @@ left:100%;
  -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
  transform: rotate(360deg);
 }
-}
+} 
+ 
+	
+ 
+
+	
 
 
