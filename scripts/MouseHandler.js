@@ -147,8 +147,8 @@ html.onclick = function(e)
 				$('#life').attr('src','images/empty.png');
 				blue_truck.toggleClass('hidden');
 				suzuki.toggleClass('hidden');
-				$('#score_div').toggleClass('hidden');
-				$('#cursor').toggleClass('hidden');
+				// $('#score_div').toggleClass('hidden');
+				// $('#cursor').toggleClass('hidden');
 				click=null;
 				break;
 		}
