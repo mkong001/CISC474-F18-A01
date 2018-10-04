@@ -2,10 +2,6 @@
 
 var x = 50;
 var y = 50;
-var w = $(document).width();
-var h = $(document).height();
-var shotsE= $(document).shotsEffective;
-var shotsW= $(document).shotsWrong;
 var score = 0;
 var lifecount=3;
 //To detect whether the mouse is able to be clicked
@@ -16,7 +12,7 @@ var first =0;
 var blue_truck_type=0;
 var suzuki_type=0;
 var reload=0;
-
+var timeLimit=9000;
 
 var html = document.querySelector('html');
 
@@ -30,6 +26,9 @@ function btruckSelector(){
 		$(".blue_truck").css("background-image", "url('images/blue-truck-phone.png')");
 		blue_truck_type=1;
 	}
+}
+function timeUpdate(){
+	timeLimit -= 80;
 }
 
 //Random selection
@@ -102,7 +101,9 @@ html.onclick = function(e)
 					score += 100;
 				}else{
 					score -=50;
-					lifecount-=1;
+					if(lifecount>0){
+						lifecount-=1;
+					}
 				}
             }
             else if((x<=suz_right && x>=suz_left) && (y<=suz_bottom && y>=suz_top)){
@@ -110,22 +111,28 @@ html.onclick = function(e)
 					score += 100;
 				}else{
 					score -=50;
-					lifecount-=1;
+					if(lifecount>0){
+						lifecount-=1;
+					}
 				}
             }   
             else{
 				score -= 50;
-				lifecount-=1;
+				if(lifecount>0){
+					lifecount-=1;
+				}
 			}
 			click=1;
 			reload=2;
 			vehicleSelector();
+
 		// If you shoot any vehicle, after 2 secs you will have a new bullet
 		// And re-select the vehicles' type.	
 		}else{
 			setInterval(resetTimer,1000);
 		}
 
+		//If the life count becomes 0, everything will be eliminated.
 		switch(lifecount){
 			case 3:
 				$('#life').attr('src','images/threehearts.png');
@@ -138,6 +145,11 @@ html.onclick = function(e)
 				break;
 			case 0:
 				$('#life').attr('src','images/empty.png');
+				blue_truck.toggleClass('hidden');
+				suzuki.toggleClass('hidden');
+				$('#score_div').toggleClass('hidden');
+				$('#cursor').toggleClass('hidden');
+				click=null;
 				break;
 		}
 }

@@ -18,6 +18,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e4ea', end
 	padding:0;
 	margin:0;
 }
+.hidden {
+	display: none;
+	opacity: 0;
+  }
+
+#gameover{
+	background-image: url();
+	position:absolute;
+	top:0px;
+	left:0px;
+
+}
 #cursor{
 	cursor: none;
 	width: 60px;
