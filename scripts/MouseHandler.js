@@ -7,8 +7,9 @@ var h = $(document).height();
 var shotsE= $(document).shotsEffective;
 var shotsW= $(document).shotsWrong;
 var score = 0;
-
+var lifecount=3;
 var click = 0;
+var first =0
 
 var html = document.querySelector('html');
 
@@ -44,6 +45,12 @@ html.onclick = function(e)
 		if (click == 0)
 		
 		{
+			//Fixed the initialize error
+			if(first==0){
+				score +=50;
+				lifecount +=1
+				first=1;
+			}
 			if((x<=truck_right && x>=truck_left) && (y<=truck_bottom && y>=truck_top)){
 				score += 100;
             }
@@ -52,8 +59,20 @@ html.onclick = function(e)
             }   
             else{
 				score -= 50;
+				lifecount-=1;
 			}
 			
+		}
+		switch(lifecount){
+			case 3:
+				$('#life').attr('src','images/threehearts.png');
+				break;
+			case 2:
+				$('#life').attr('src','images/twohearts.png');
+				break;
+			case 1:
+				$('#life').attr('src','images/heart.png');
+				break;
 		}
 }
 
